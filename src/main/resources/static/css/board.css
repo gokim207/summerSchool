@@ -29,3 +29,52 @@
 .form_area .button{
     text-align: center;
 }
+
+.list{
+    width: 500px;
+    border-collapse: collapse;
+}
+
+.list td, .list th {
+    padding: 3px;
+    border: 1px solid #CCC;
+}
+
+.write_btn{
+    width: 500px;
+    text-align: right;
+    margin: 5px;
+}
+
+.write_btn button{
+    margin-right: 10px;
+}
+
+.read_area{
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #CCC;
+}
+
+.read_area > div{
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #EEE; r
+}
+
+.read_area label{
+    display: inline-block;
+    width: 100px;
+    margin-right: 10px;
+    text-align:right;
+}
+
+.read_area .content{
+    display: inline-block;
+    width: 380;
+}
+
+.btns{
+    text-align: center;
+}
