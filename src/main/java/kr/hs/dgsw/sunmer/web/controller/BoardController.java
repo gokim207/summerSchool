@@ -67,13 +67,13 @@ public class BoardController {
                          @PathVariable("id") int id) {
         Post post = boardService.read(id);
 
-        model.addAttribute("", post);
+        model.addAttribute("post", post);
         return detail(model, id);
     }
 
-    @GetMapping("/board/rewrite")
+    @GetMapping("/board/rewrite/{id}")
     public String rewrite(Model model,
-                          @RequestParam("id") int id){
+                          @PathVariable("id") int id) {
         Post post = boardService.read(id);
 
         model.addAttribute("post", post);
@@ -81,27 +81,31 @@ public class BoardController {
         return "rewrite";
     }
 
-    @GetMapping("/board/rewrite/{id}")
-    public String rewrite1(Model model,
-                          @PathVariable("id") int id) {
-        return rewrite(model, id);
-    }
-
     @PostMapping("/board/rewrite.do")
     public String rewriteDo(
             @RequestParam("id") int id,
             @RequestParam("title") String title,
-            @RequestParam("content") String content) {
+            @RequestParam("content") String content,
+            @RequestParam("writer") String writer) {
 
-        Post post =boardService.read(id);
-        Post post1 = Post.builder()
+        Post post = Post.builder()
+                .id(id)
                 .title(title)
                 .content(content)
+                .writer(writer)
                 .build();
 
-        post.setTitle(post1.getTitle());
-        post.setContent(post1.getContent());
+        boardService.update(post);
 
         return "redirect:list";
+    }
+
+    @PostMapping("/board/delete/{id}")
+    public String deleteDo(
+            @PathVariable("id") int id){
+
+        boardService.delete(id);
+
+        return "redirect:/board/list";
     }
 }

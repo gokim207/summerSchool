@@ -5,6 +5,10 @@
     <title>게시판</title>
     <link href="/css/board.css" rel="stylesheet">
 </head>
+
+<form method="post" id="delete_form"
+      th:action="@{/board/delete/{id}(id=${post.id})}">
+</form>
 <body>
     <h1>게시판</h1>
     <div class="read_area">
@@ -26,9 +30,38 @@
         <div class="btns">
             <a href="/board/list"><button>목록</button></a>
             <a th:href="@{/board/rewrite(id=${post.id})}"><button>수정</button></a>
-
-            <button>삭제</button>
+            <button onclick="removePost();">삭제</button>
         </div>
     </div>
+
+    <h3>댓글 작성</h3>
+    <div class="comment_area">
+        <form method="post" action="">
+            <div>
+                <label>내용</label>
+                <textarea name="content"></textarea>
+            </div>
+            <div>
+                <label>글쓴이</label>
+                <input type="text" name="writer">
+            </div>
+            <div>
+                <button>확인</button>
+            </div>
+        </form>
+    </div>
+
+
+
 </body>
+<script>
+
+    const removePost = () => {
+        if(confirm("정말 삭제하시겠습니까?")) {
+            const form = document.querySelector("#delete_form");
+
+            form.submit();
+        }
+    };
+</script>
 </html>

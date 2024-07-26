@@ -21,6 +21,12 @@
             <textarea name="content" th:text="${post.content}"></textarea>
         </div>
 
+        <div>
+            <lable>글쓴이</lable>
+            <input type="text" name="writer"
+                    th:value="${post.writer}">
+        </div>
+
         <div class="button">
             <button>저장</button>
         </div>

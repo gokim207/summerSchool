@@ -60,7 +60,7 @@
 .read_area > div{
     margin: 10px;
     padding: 5px;
-    border-bottom: 1px solid #EEE; r
+    border-bottom: 1px solid #EEE;
 }
 
 .read_area label{
@@ -77,4 +77,31 @@
 
 .btns{
     text-align: center;
+}
+
+.comment_area{
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #CCC;
+}
+
+.comment_area > div{
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #EEE;
+}
+
+.comment_area label{
+    width: 100px;
+    margin-right: 10px;
+}
+
+.comment_area textarea{
+    width: 350px;
+    height: 50px;
+}
+
+.comment_area > div button{
+    text-align: right;
 }

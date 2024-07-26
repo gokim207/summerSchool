@@ -1,5 +1,6 @@
 package kr.hs.dgsw.sunmer.web.service.impl;
 
+import jakarta.annotation.PostConstruct;
 import kr.hs.dgsw.sunmer.web.domain.Post;
 import kr.hs.dgsw.sunmer.web.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,17 @@ public class BoardServiceImpl implements BoardService {
             new ArrayList<>();
 
     private int idPool =0;
+
+    @PostConstruct
+    public void makeSampleData() {
+        Post post = Post.builder()
+                .title("1")
+                .content("2")
+                .writer("3")
+                .build();
+
+        addPost(post);
+    }
 
     @Override
     public Post addPost(Post post) {
@@ -46,11 +58,17 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Post update(Post post) {
-        return null;
+        Post original = read(post.getId());
+        original.setTitle(post.getTitle());
+        original.setContent(post.getContent());
+        original.setWriter(post.getWriter());
+
+        return original;
     }
 
     @Override
     public void delete(int id) {
-
+        Post post = read(id);
+        list.remove(post);
     }
 }
